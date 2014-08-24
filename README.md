@@ -1,3 +1,5 @@
+Forked version of github.com/revel/revel
+
 # Revel
 
 A high productivity, full-stack web framework for the [Go language](http://www.golang.org).
