@@ -83,7 +83,7 @@ func (s Session) cookie() *http.Cookie {
 
 	sessionData := url.QueryEscape(sessionValue)
 	return &http.Cookie{
-		Name:     CookiePrefix + "_SESSION",
+		Name:     CookiePrefix,
 		Value:    Sign(sessionData) + "-" + sessionData,
 		Path:     "/",
 		HttpOnly: CookieHttpOnly,
@@ -156,7 +156,7 @@ func SessionFilter(c *Controller, fc []Filter) {
 // restoreSession returns either the current session, retrieved from the
 // session cookie, or a new session.
 func restoreSession(req *http.Request) Session {
-	cookie, err := req.Cookie(CookiePrefix + "_SESSION")
+	cookie, err := req.Cookie(CookiePrefix)
 	if err != nil {
 		return make(Session)
 	} else {
